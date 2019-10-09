@@ -1,0 +1,16 @@
+#!/bin/bash
+
+
+
+
+read -p "please enter the website url: " site
+
+read -p "please enter the name of the folder you want to save your data in: " save
+
+
+service tor start #starts tor service to be anonymous
+
+ 
+proxychains firefox $site/wp-json/wp/v2/users  #open firefox  and does user enumeration 
+
+echo "any malicious use of the code does not hold the author responsible"
