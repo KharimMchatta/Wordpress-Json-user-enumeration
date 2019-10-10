@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+read -p "please enter the website url: " site #enter the url of the site u want to enumerate
+
+read -p "please enter the name of the folder you want to save your data in: " save #enter the file name where u want to save your data
+  
+
+curl $site/wp-json/wp/v2/users | jq -r '.[]|[.id, .name]| @csv' | awk -v FS="," 'BEGIN{print "ID\tName";print "============"}{printf "%s\t%s%s",$1,$2,ORS}' > $save #open curl 
+#parse the output using json query and awk
+ 
